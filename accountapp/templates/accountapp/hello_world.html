@@ -2,15 +2,23 @@
 
 {% block content %}
 <div>
-  <h1>content</h1>
+  <h1>Hello World List</h1>
 
 <form action="/account/hello_world/" method="post">
   {% csrf_token %}
-  <input type="submit" class="btn btn-primary" value ="POST">
-
+  <div>
+    <input type="text" name="hello_world_input" id="">
+  </div>
+  <div>
+    <input type="submit" class="btn btn-primary" value ="POST">
+  </div>
 </form>
-  <h1>
-    {{ text }}
-  </h1>
+  {% if hello_world_list %}
+    {% for hello_world in hello_world_list %}
+    <h1>
+      {{ hello_world.text }}
+    </h1>
+    {% endfor %}
+  {% endif %}
 </div>
 {% endblock %}
